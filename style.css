@@ -89,6 +89,7 @@ a { color: inherit; }
 }
 
 .brand-star { color: #fff4bb; font-size: 19px; }
+.cream-flower { color: #fff0b8 !important; }
 .top-note span { padding-left: 5px; font-size: 16px; }
 
 .locker {
@@ -174,6 +175,21 @@ h1, h2, h3, p { margin-top: 0; }
   vertical-align: middle;
 }
 .name-tag p { margin: 4px 0 0; color: #806879; font-size: 12px; letter-spacing: .07em; }
+.name-tag h1, .name-tag p { max-width: calc(100% - 148px); }
+.live-clock {
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  display: grid;
+  gap: 2px;
+  min-width: 116px;
+  color: #806879;
+  text-align: center;
+  transform: translateY(-38%);
+}
+.live-clock-label { color: #a77c91; font: 14px "Naikai", sans-serif; letter-spacing: .14em; }
+.live-clock time { color: #725064; font: 28px/1.2 "Naikai", sans-serif; font-variant-numeric: tabular-nums; }
+#current-date { font-size: 16px; letter-spacing: .04em; }
 
 .locker-doodle {
   position: relative;
@@ -234,6 +250,8 @@ h1, h2, h3, p { margin-top: 0; }
 .tab-zh { color: #967887; font-size: 20px; }
 
 .content-board {
+  position: relative;
+  isolation: isolate;
   min-height: 390px;
   padding: clamp(20px, 4vw, 38px) clamp(20px, 5vw, 52px);
   border: 1px solid #e9d8d0;
@@ -243,8 +261,37 @@ h1, h2, h3, p { margin-top: 0; }
     var(--paper);
   box-shadow: 0 7px 15px rgba(111, 54, 80, .14);
 }
+.content-board::before,
+.content-board::after {
+  position: absolute;
+  display: block;
+  z-index: 0;
+  bottom: 0;
+  content: "";
+  opacity: .3;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+.content-board::before {
+  left: 8px;
+  width: min(14%, 116px);
+  height: 76%;
+  transform: scaleX(-1);
+  background: url("灣.png") left bottom / contain no-repeat;
+}
+.content-board::after {
+  right: 8px;
+  width: min(36%, 300px);
+  height: 100%;
+  background-image: url("灣.png"), url("灣.png");
+  background-position: right bottom, left bottom;
+  background-size: 190px auto, 105px auto;
+  background-repeat: no-repeat;
+}
 
 .panel {
+  position: relative;
+  z-index: 1;
   display: grid;
   min-height: 320px;
   grid-template-columns: minmax(0, 1.35fr) minmax(195px, .75fr);
@@ -387,7 +434,7 @@ h1, h2, h3, p { margin-top: 0; }
 
 .panel-skills { grid-template-columns: minmax(0, .9fr) minmax(310px, 1fr); }
 .skill-list { display: grid; gap: 10px; margin: 20px 0 0; padding: 0; list-style: none; }
-.skill-list li { display: flex; justify-content: space-between; gap: 20px; padding: 9px 0; border-bottom: 1px dashed #e6cad5; color: #715e6b; font-size: 15px; }
+.skill-list li { display: flex; justify-content: space-between; gap: 20px; padding: 9px 0; border-bottom: 1px dashed #e6cad5; color: #715e6b; font-size: 20px; }
 .skill-list b { color: #c45882; font: 500 18px "Naikai", sans-serif; }
 .radar-wrap { position: relative; width: min(100%, 440px); justify-self: center; }
 .radar { display: block; width: 100%; overflow: visible; }
@@ -403,7 +450,7 @@ h1, h2, h3, p { margin-top: 0; }
 .goal-number { color: #d17a9b; font: 500 11px "Naikai", sans-serif; }
 .goal-list h3 { margin: 0 0 5px; color: #5c4655; font-size: 20px; }
 .goal-list p { margin: 0; color: #857482; font-size: 18px; line-height: 1.7; }
-.goal-star { color: #d27498; font-size: 18px; }
+.goal-star { color: #fff0b8; font-size: 18px; }
 .goal-stamp {
   display: grid;
   width: 178px;
@@ -463,6 +510,19 @@ h1, h2, h3, p { margin-top: 0; }
   .name-tag { width: 90%; padding: 12px 15px 12px 18px; }
   .name-tag h1 { font-size: clamp(26px, 8vw, 37px); }
   .name-tag h1 span { display: block; margin: 4px 0 0; }
+  .live-clock {
+    position: static;
+    width: max-content;
+    min-width: 0;
+    margin: 9px 0 0 auto;
+    grid-template-columns: auto auto;
+    align-items: baseline;
+    column-gap: 7px;
+    transform: none;
+  }
+  .live-clock-label { grid-column: 1 / -1; text-align: right; }
+  .live-clock time { font-size: 16px; }
+  #current-date { font-size: 9px; }
   .locker-doodle { position: absolute; top: 80px; right: 7px; width: 60px; height: 50px; margin: 0; opacity: .8; transform: scale(.65) rotate(7deg); transform-origin: top right; }
   .tabs { gap: 6px; padding: 2px 0 16px; }
   .tab { min-height: 76px; padding: 8px 2px 6px; }
@@ -471,6 +531,12 @@ h1, h2, h3, p { margin-top: 0; }
   .tab-en { font-size: 8px; letter-spacing: 0; }
   .tab-zh { font-size: 11px; }
   .content-board { min-height: 0; padding: 23px 18px; }
+  .content-board::before { width: min(20%, 80px); height: 68%; }
+  .content-board::after {
+    width: min(50%, 190px);
+    height: 88%;
+    background-size: 120px auto, 70px auto;
+  }
   .panel, .panel-skills { grid-template-columns: 1fr; gap: 20px; }
   .panel-copy > p:not(.eyebrow) { font-size: 15px; }
   .panel h2 { font-size: clamp(27px, 7vw, 34px); }
@@ -722,14 +788,14 @@ h1, h2, h3, p { margin-top: 0; }
   box-shadow: inset 0 0 0 2px rgba(255,242,248,.76), 18px 14px 22px rgba(90,34,62,.23);
 }
 
-.entry-spark, .entry-note {
+.entry-deco, .entry-note {
   position: absolute;
   color: #fff7cf;
   text-shadow: 0 2px 8px rgba(121,48,80,.2);
 }
-.entry-spark { font-size: 43px; }
-.spark-one { top: 12%; right: -17%; }
-.spark-two { top: 38%; left: -19%; color: #c65e8c; font-size: 48px; }
+.entry-deco { line-height: 1; }
+.deco-flower { top: 12%; right: -17%; color: #fff0b8; font-size: 43px; }
+.deco-bow { top: 38%; left: -19%; color: #c65e8c; font-size: 48px; }
 .entry-note {
   right: -24%;
   bottom: 16%;
@@ -798,14 +864,14 @@ h1, h2, h3, p { margin-top: 0; }
   .entry-screen { padding-top: 22px; }
   .entry-kicker { font-size: 8px; }
   .entry-note { right: -18%; bottom: 12%; font-size: 9px; }
-  .spark-one { right: -13%; }
-  .spark-two { left: -14%; }
+  .deco-flower { right: -13%; }
+  .deco-bow { left: -14%; }
 }
 
 @media (max-width: 390px) {
   .locker-scene { width: 210px; height: 350px; min-height: 0; }
   .entry-note { right: -20%; }
-  .entry-spark { font-size: 33px; }
+  .entry-deco { font-size: 33px; }
   .entry-title { letter-spacing: .13em; }
 }
 
@@ -1027,6 +1093,10 @@ h1, h2, h3, p { margin-top: 0; }
   background-position: center, center;
   background-size: auto, 260px auto;
   background-repeat: no-repeat, repeat;
+}
+.locker-interior .hobby-groups section {
+  background: transparent;
+  background-image: none;
 }
 
 .panel-guestbook {

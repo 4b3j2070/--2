@@ -15,9 +15,9 @@
       <div class="locker-scene">
         <div class="locker-cabinet">
           <div class="cabinet-interior-art" aria-hidden="true">
-            <div class="inside-shelf shelf-top"><span>✿</span><span>♡</span><span>✦</span></div>
+            <div class="inside-shelf shelf-top"><span>✿</span><span>♡</span><span class="cream-flower">✿</span></div>
             <div class="inside-note note-one">my<br>little<br>world</div>
-            <div class="inside-note note-two">DREAM<br>BIG ✧</div>
+            <div class="inside-note note-two">DREAM<br>BIG <span class="cream-flower">✿</span></div>
             <div class="inside-photo"></div>
             <div class="inside-shelf shelf-bottom"><span>★</span><span>♡</span><span>✿</span></div>
           </div>
@@ -36,8 +36,8 @@
             <span class="door-prompt">TAP TO OPEN <b>↗</b></span>
           </button>
         </div>
-        <span class="entry-spark spark-one" aria-hidden="true">✳</span>
-        <span class="entry-spark spark-two" aria-hidden="true">♡</span>
+        <span class="entry-deco deco-flower" aria-hidden="true">✿</span>
+        <span class="entry-deco deco-bow" aria-hidden="true">୨୧</span>
         <span class="entry-note">a locker full<br>of little things</span>
       </div>
       <h1 class="entry-title" id="entry-title">JIANI'S LOCKER</h1>
@@ -47,7 +47,7 @@
     <section class="locker-interior" id="locker-interior" aria-label="佳妮的置物櫃內頁" hidden>
       <header class="topbar">
         <a class="brand" href="#" data-close-locker aria-label="關上置物櫃，回到封面">
-          <span class="brand-star" aria-hidden="true">✳</span>
+          <span class="brand-star" aria-hidden="true">✿</span>
           <span>JIANI'S LOCKER</span>
         </a>
         <span class="top-note">A LITTLE PIECE OF ME <span aria-hidden="true">♡</span></span>
@@ -61,9 +61,14 @@
           <span class="tag-caption">VISUAL DIARY / 2025—26</span>
           <h1 id="page-title">陳佳妮 <span>JIANI CHEN</span></h1>
           <p>商業設計・視覺傳達・日常收藏</p>
+          <div class="live-clock" aria-label="目前日期與時間">
+            <span class="live-clock-label">LOCAL TIME</span>
+            <time id="current-time">--:--:--</time>
+            <span id="current-date"></span>
+          </div>
         </div>
         <div class="locker-doodle" aria-hidden="true">
-          <span class="doodle-spark">✳</span>
+          <span class="doodle-spark">✿</span>
           <span class="doodle-heart">♡</span>
           <span class="doodle-caption">stay<br>curious!</span>
         </div>
@@ -77,7 +82,7 @@
           <span class="tab-icon" aria-hidden="true">♡</span><span class="tab-en">MY HOBBIES</span><span class="tab-zh">興趣與愛好</span>
         </button>
         <button class="tab tab-skills" type="button" data-panel="skills" aria-controls="skills" aria-pressed="false">
-          <span class="tab-icon" aria-hidden="true">✧</span><span class="tab-en">RADAR CHART</span><span class="tab-zh">專業技能</span>
+          <span class="tab-icon" aria-hidden="true">⬠</span><span class="tab-en">RADAR CHART</span><span class="tab-zh">專業技能</span>
         </button>
         <button class="tab tab-goals" type="button" data-panel="goals" aria-controls="goals" aria-pressed="false">
           <span class="tab-icon" aria-hidden="true">☆</span><span class="tab-en">GOALS</span><span class="tab-zh">未來目標</span>
@@ -95,8 +100,8 @@
           <div class="panel-copy">
             <p class="eyebrow">01 / NICE TO MEET YOU</p>
             <h2>關於我 <span>About me</span></h2>
-            <p class="intro">你好！我是陳佳妮，喜歡把日常靈感收集起來，變成有溫度的設計。</p>
-            <p>來自新北市目前就讀於南臺科技大學視覺傳達設計系商業設計組。<br>喜歡觀察生活、嘗試不同的視覺風格。</p>
+            <p class="intro">你好！我是陳佳妮 </p>
+            <p>來自新北市目前就讀於南臺科技大學視覺傳達設計系商業設計組。<br>關於我的視覺作品不拘泥於單一風格，熱衷於挑戰並揉合各式視覺表現手法。</p>
             <div class="mini-tags"><span>VISUAL COMMUNICATION</span><span>TAIWAN · TAINAN</span></div>
           </div>
           <div class="about-art">
@@ -139,7 +144,7 @@
           <div class="panel-copy">
             <p class="eyebrow">03 / A WORK IN PROGRESS</p>
             <h2>專業技能維度 <span>Radar chart</span></h2>
-            <p class="intro">在每次練習與合作中，慢慢累積自己的能力值。</p>
+            <p class="intro">在每次練習與合作中，慢慢累積自己的經驗值。</p>
             <ul class="skill-list">
               <li><span>溝通協調</span><b>85％</b></li>
               <li><span>問題解決</span><b>75％</b></li>
@@ -183,8 +188,8 @@
             <h2>未來目標 <span>Goals</span></h2>
             <p class="intro">想去更遠的地方，也想更認識自己。</p>
             <ol class="goal-list">
-              <li><span class="goal-number">01</span><div><h3>考取英文檢定</h3><p>多積累一份語言力，解鎖更廣闊的世界視野。</p></div><span class="goal-star">✧</span></li>
-              <li><span class="goal-number">02</span><div><h3>出國生活一段時間</h3><p>勇於走出舒適圈，透過海外交換或打工換宿開闊人生經驗。</p></div><span class="goal-star">✧</span></li>
+              <li><span class="goal-number">01</span><div><h3>考取英文檢定</h3><p>多積累一份語言力，解鎖更廣闊的世界視野。</p></div><span class="goal-star cream-flower">✿</span></li>
+              <li><span class="goal-number">02</span><div><h3>出國生活一段時間</h3><p>勇於走出舒適圈，透過海外交換或打工換宿開闊人生經驗。</p></div><span class="goal-star cream-flower">✿</span></li>
               <li><span class="goal-number">03</span><div><h3>找到喜歡的工作</h3><p>將熱愛與專長揉合，拼湊出屬於自己的理想職業。</p></div><span class="goal-star">♡</span></li>
             </ol>
           </div>
@@ -224,7 +229,7 @@
             <textarea id="guestbook-message" name="message" maxlength="200" rows="3" placeholder="在這裡留下你的紙條…" required></textarea>
             <div class="guestbook-form-footer">
               <span id="guestbook-counter">0 / 50</span>
-              <button class="guestbook-submit" type="submit">貼上留言 <span aria-hidden="true">✦</span></button>
+              <button class="guestbook-submit" type="submit">貼上留言 <span class="cream-flower" aria-hidden="true">✿</span></button>
             </div>
             <p class="guestbook-status" id="guestbook-status" role="status" aria-live="polite"></p>
           </form>
@@ -237,7 +242,7 @@
 
       <footer class="locker-footer">
         <span>DESIGNED WITH <b>♡</b> & A LITTLE DAYDREAM</span>
-        <span>✦ SCROLL THROUGH MY WORLD ✦</span>
+        <span><i class="cream-flower" aria-hidden="true">✿</i> SCROLL THROUGH MY WORLD <i class="cream-flower" aria-hidden="true">✿</i></span>
       </footer>
       </section>
       <p class="page-credit">A PERSONAL MOODBOARD <span>✿</span> MADE BY JIANI</p>
@@ -288,6 +293,30 @@
     let guestbookNotes = [];
     let mascotPhraseTimer;
     let lastMascotPhraseTime = 0;
+
+    const currentTime = document.querySelector("#current-time");
+    const currentDate = document.querySelector("#current-date");
+    const clockTimeFormatter = new Intl.DateTimeFormat(undefined, {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false
+    });
+    const clockDateFormatter = new Intl.DateTimeFormat(undefined, {
+      month: "2-digit",
+      day: "2-digit",
+      weekday: "short"
+    });
+
+    function updateClock() {
+      const now = new Date();
+      currentTime.dateTime = now.toISOString();
+      currentTime.textContent = clockTimeFormatter.format(now);
+      currentDate.textContent = clockDateFormatter.format(now);
+    }
+
+    updateClock();
+    window.setInterval(updateClock, 1000);
 
     const starPositions = [[19, 25], [77, 20], [83, 42], [16, 45], [72, 66], [84, 63]];
     const starColors = ["#fff0b3", "#e879a4", "#b9a2d4", "#a9bd8f", "#fff8e4", "#e7a477"];
