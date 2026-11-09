@@ -251,6 +251,7 @@
       <span class="mascot-bubble" id="mascot-bubble" aria-live="polite"></span>
       <img src="人.png" alt="">
     </button>
+    <span class="custom-cursor" id="custom-cursor" aria-hidden="true"></span>
   </main>
   <script>
     const tabs = [...document.querySelectorAll(".tab")];
@@ -293,6 +294,47 @@
     let guestbookNotes = [];
     let mascotPhraseTimer;
     let lastMascotPhraseTime = 0;
+
+    const customCursor = document.querySelector("#custom-cursor");
+    const canUseCustomCursor = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let lastStarTime = -Infinity;
+    let lastStarX = 0;
+    let lastStarY = 0;
+
+    if (canUseCustomCursor) {
+      document.body.classList.add("has-custom-cursor");
+      window.addEventListener("pointermove", (event) => {
+        if (event.pointerType !== "mouse") return;
+        customCursor.style.left = `${event.clientX}px`;
+        customCursor.style.top = `${event.clientY}px`;
+        customCursor.classList.add("is-visible");
+
+        if (reduceMotion) return;
+        const now = performance.now();
+        const distance = Math.hypot(event.clientX - lastStarX, event.clientY - lastStarY);
+        if (now - lastStarTime < 55 || distance < 12) return;
+        lastStarTime = now;
+        lastStarX = event.clientX;
+        lastStarY = event.clientY;
+
+        const star = document.createElement("span");
+        star.className = "cursor-trail-star";
+        star.setAttribute("aria-hidden", "true");
+        star.textContent = Math.random() > 0.5 ? "★" : "✦";
+        star.style.left = `${event.clientX + (Math.random() * 14 - 7)}px`;
+        star.style.top = `${event.clientY + (Math.random() * 14 - 7)}px`;
+        star.style.setProperty("--star-drift-x", `${Math.random() * 48 - 24}px`);
+        star.style.setProperty("--star-drift-y", `${24 + Math.random() * 44}px`);
+        star.style.setProperty("--star-turn", `${Math.random() * 100 - 50}deg`);
+        star.style.setProperty("--star-size", `${9 + Math.random() * 9}px`);
+        star.style.color = ["#f08bb4", "#e76f9d", "#f5a2c2"][Math.floor(Math.random() * 3)];
+        document.body.append(star);
+        window.setTimeout(() => star.remove(), 950);
+      });
+
+      window.addEventListener("blur", () => customCursor.classList.remove("is-visible"));
+    }
 
     const currentTime = document.querySelector("#current-time");
     const currentDate = document.querySelector("#current-date");
